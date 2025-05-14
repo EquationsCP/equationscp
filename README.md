@@ -14,8 +14,9 @@ This project uses pipenv for dependency management. The required dependencies ar
 
 - sympy
 - fastmcp
+- npx(for running the MCP Inspector)
 
-These dependencies are already specified in the Pipfile at the root of the project.
+These dependencies are already specified in the Pipfile at the root of the project with the exception of `npx`.
 
 ## Usage
 
@@ -24,42 +25,54 @@ These dependencies are already specified in the Pipfile at the root of the proje
 To start the server, run:
 
 ```bash
-cd sympy-mcp-server
-pipenv run python run_server.py
+pipenv run stdio-server
 ```
 
 Or alternatively:
 
 ```bash
-cd sympy-mcp-server
-pipenv run python -m src.server
+fastmcp run src/server.py
 ```
 
-The server will start on `http://0.0.0.0:8000`.
+This will start the MCP server and listen for calls over `stdio`.
+
+To run the app in HTTP mode(with SSE):
+
+```bash
+pipenv run http-server
+```
+
+Or alternatively:
+
+```bash
+fastmcp run src/server.py --transport sse --host 0.0.0.0 --port 4242
+```
+
+The server will start on `http://0.0.0.0:4242`. 
 
 ### Using with Claude Desktop
 
-To use this server with Claude Desktop:
-
-1. Start the server as described above
-2. In Claude Desktop, go to Settings > MCP Servers
-3. Add the configuration file path: `/path/to/sympy-mcp-experiment/sympy-mcp-server/mcp_config.json`
-4. Claude will now have access to the `solve_equation` tool
+TBD, since I refuse to spend $100 every month on a Claude Max plan _just_ to add this. 
 
 ### Testing the Server
 
-A test client is provided to verify that the server is working correctly:
+If you have `npx` available, you can use the MCP Inspector:
 
 ```bash
-cd sympy-mcp-server
-pipenv run python test_client.py
+pipenv run inspector
 ```
 
-This will send a sample equation to the server and display the step-by-step solution.
+Alternatively:
+
+```bash
+npx @modelcontextprotocol/inspector fastmcp run src/server.py
+```
+
+This will allow you to access the MCP Inspector at `http://127.0.0.1:6274`, where you can list available tools, and run sample calls against them.
 
 ### Using the Equation Solver Tool
 
-The server exposes a tool called `solve_equation` that can be used to solve linear equations.
+The server exposes a tool called `solve_linear_equation` that can be used to solve linear equations.
 
 #### Input Format
 
@@ -149,3 +162,5 @@ Output:
 - Support for quadratic equations
 - Support for systems of linear equations
 - Support for symbolic solutions (with parameters)
+- Support for differential equations
+- Support for a lot more(differential and integral calculus, combinatorics, discrete math, matrix and linear algebra among others)
