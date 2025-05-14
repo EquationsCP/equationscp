@@ -1,0 +1,67 @@
+name: Build EquationsCP Binary
+on: 
+  push:
+    tags:
+    - '*'
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [{platform: linux-amd64, runner: warp-custom-ubuntu-24-04-amd64-2x}, {platform: linux-arm64, runner: warp-custom-ubuntu-24-04-arm64-2x}, {platform: darwin-arm64, runner: warp-macos-14-arm64-6x}]
+        python-version: ["3.12"]
+    runs-on: ${{ matrix.os.runner }}
+    permissions:
+      contents: write
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Get tag
+        id: tagger
+        run: echo "::set-output name=tag::$(git describe --tags HEAD)"
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pipenv"
+      - name: Upgrade pip + setuptools and install pipenv
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --upgrade setuptools
+          python -m pip install --upgrade pipenv
+      - name: Install dependencies
+        run: pipenv install
+      - name: Build CLI
+        run: pipenv run build
+      - name: Tag release
+        run: cp dist/app dist/equationscp-${{ steps.tagger.outputs.tag }}-${{ matrix.os.platform }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: equationscp-${{ steps.tagger.outputs.tag }}-${{ matrix.os.platform }}
+          path: dist/equationscp-${{ steps.tagger.outputs.tag }}-${{ matrix.os.platform }}
+  release:
+    strategy:
+      fail-fast: false
+    runs-on: warp-ubuntu-2204-x64-2x
+    needs: build
+    permissions:
+      contents: write
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Get tag
+        id: tagger
+        run: echo "::set-output name=tag::$(git describe --tags HEAD)"
+      - name: Download built artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          pattern: equationscp-*
+          merge-multiple: true
+      - name: Cut new release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "artifacts/equationscp-*"
+          prerelease: true
