@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="90" fill="#f0f8ff" stroke="#3366cc" stroke-width="4"/>
+  
+  <!-- Mathematical Variables -->
+  <g transform="translate(75, 90) scale(0.5)">
+    <text x="0" y="15" font-family="'Open Sans', Verdana, Arial, sans-serif" font-size="70" font-weight="300" fill="#cc3366">x</text>
+    <text x="50" y="15" font-family="'Open Sans', Verdana, Arial, sans-serif" font-size="70" font-weight="300" fill="#3366cc">y</text>
+  </g>
+  
+  <!-- Euler's Identity -->
+  <text x="100" y="65" font-family="'Open Sans', Verdana, Arial, sans-serif" font-size="14" font-weight="300" text-anchor="middle" fill="#cc3366">e<tspan dy="-5" font-size="10">iπ</tspan><tspan dy="5"> + 1 = 0</tspan></text>
+  
+  <!-- Text "EquationsCP" -->
+  <text x="100" y="145" font-family="'Open Sans', Verdana, Arial, sans-serif" font-size="20" font-weight="300" text-anchor="middle" fill="#3366cc">EquationsCP</text>
+  
+  <!-- Mathematical Symbols - Repositioned -->
+  <text x="55" y="42" font-family="'Open Sans', Verdana, Arial, sans-serif" font-size="17" font-weight="300" fill="#cc3366" opacity="0.6">∫</text>
+  <text x="52" y="100" font-family="'Open Sans', Verdana, Arial, sans-serif" font-size="17" font-weight="300" fill="#cc3366" opacity="0.6">∑</text>
+  <text x="145" y="42" font-family="'Open Sans', Verdana, Arial, sans-serif" font-size="17" font-weight="300" fill="#cc3366" opacity="0.6">∂</text>
+  <text x="145" y="100" font-family="'Open Sans', Verdana, Arial, sans-serif" font-size="17" font-weight="300" fill="#cc3366" opacity="0.6">√</text>
+  
+  <!-- Additional Math Symbols - Repositioned -->
+  <text x="50" y="120" font-family="'Open Sans', Verdana, Arial, sans-serif" font-size="15" font-weight="300" fill="#3366cc" opacity="0.5">π</text>
+  <text x="150" y="120" font-family="'Open Sans', Verdana, Arial, sans-serif" font-size="15" font-weight="300" fill="#3366cc" opacity="0.5">θ</text>
+</svg>

@@ -1,4 +1,4 @@
-![EquationsCP Logo](logo.svg)
+![EquationsCP Logo](logo-compact.svg)
 # EquationsCP - MCP Server for 
 
 A FastMCP server for solving algebraic equations using SymPy.
