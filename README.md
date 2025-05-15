@@ -1,4 +1,6 @@
-![EquationsCP Logo](logo-compact.svg)
+<div align="center">
+  <img src="logo-compact.svg" alt="EquationsCP Logo" width="150"/>
+</div>
 # EquationsCP - MCP Server for 
 
 A FastMCP server for solving algebraic equations using SymPy.
