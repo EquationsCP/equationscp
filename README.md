@@ -20,6 +20,39 @@ These dependencies are already specified in the Pipfile at the root of the proje
 
 ## Usage
 
+Compiled binaries for Linux(`amd64` and `arm64`) and macOS(`arm64`) can be found [here](https://github.com/EquationsCP/equationscp/releases). Download the appropriate binary for your platform, and run: `./<FILENAME>`.
+
+> [!NOTE]
+> Windows binaries will be released fairly soon.
+
+
+> [!WARNING]
+> Note that macOS may throw an error when you try running the binary since these binaries are unsigned. To get around that, open `System Settings` > `Privacy & Security`. Scroll down and you'll see the `equationscp` binary being flagged with an option to allow the executable to run anyway. Click that, and you may be asked to authenticate with your root password / TouchID. 
+
+Congratulations! The MCP server is now running. It runs listening for MCP requests over `stdio` by default, but this will be made more flexible to accomodate streamable HTTP or SSE in the future. You can now configure Claude Desktop using the instructions documented here: [https://modelcontextprotocol.io/quickstart/server#testing-your-server-with-claude-for-desktop](https://modelcontextprotocol.io/quickstart/server#testing-your-server-with-claude-for-desktop). Here's what a sample `claude_desktop_config.json` would look like:
+
+```json
+{
+    "mcpServers": {
+        "equationscp": {
+            "command": "/Users/rudimk/Downloads/equationscp-v0.1.0-rc-2505150621-darwin-arm64",
+            "args": []
+        }
+    }
+}
+```
+
+Restart Claude Desktop, and you should now be able to use the MCP server. Here's what it looks like in action:
+
+Claude asking for
+![Image](https://github.com/user-attachments/assets/32baac87-1d38-41c2-9b83-7a0419d80def) "Claude asking for permission to call EquationsCP"
+![Image](https://github.com/user-attachments/assets/3eff7bbd-a110-4117-8a2a-1374658fb3da) "The equation being converted to an input for the MCP server"
+![Image](https://github.com/user-attachments/assets/e4ca4f16-5ba3-4a90-a59f-5c09a3b80549) "The MCP server's output along with how Claude finally renders the solution"
+
+
+
+## Development
+
 ### Starting the Server
 
 To start the server, run:
@@ -52,7 +85,7 @@ The server will start on `http://0.0.0.0:4242`.
 
 ### Using with Claude Desktop
 
-TBD, since I refuse to spend $100 every month on a Claude Max plan _just_ to add this. 
+TBD, since I refuse to spend $100 every month on a Claude Max plan _just_ to test support for adding HTTP-based MCP servers. We'll wait for our friends to Anthropic to release this in GA.
 
 ### Testing the Server
 
