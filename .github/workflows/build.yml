@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [{platform: linux-amd64, runner: warp-custom-ubuntu-24-04-amd64-2x}, {platform: linux-arm64, runner: warp-custom-ubuntu-24-04-arm64-2x}, {platform: darwin-arm64, runner: warp-macos-14-arm64-6x}]
+        os: [{platform: linux-amd64, runner: warp-ubuntu-latest-x64-2x}, {platform: linux-arm64, runner: warp-ubuntu-latest-arm64-2x}, {platform: darwin-arm64, runner: warp-macos-14-arm64-6x}]
         python-version: ["3.12"]
     runs-on: ${{ matrix.os.runner }}
     permissions:
