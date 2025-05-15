@@ -9,13 +9,15 @@ tasks:
         sh: date +"%y%m%d%H%M"
       BRANCH:
         sh: git rev-parse --abbrev-ref HEAD
-      cmds:
-        - cmd: git tag {{.VERSION}}-rc-{{.TIMESTAMP}}
-        - cmd: git push origin {{.BRANCH}} --tags
-        - cmd: echo 'A run has been triggered here https://github.com/equationscp/equationscp/actions. If this is a public release (such as CLI), in a few moments, your build will commence here https://github.com/equationscp/equationscp/actions, and be available here https://github.com/equationscp/equationscp/releases'.
+    cmds:
+      - cmd: git tag {{.VERSION}}-rc-{{.TIMESTAMP}}
+      - cmd: git push origin {{.BRANCH}} --tags
+      - cmd: echo 'A run has been triggered here https://github.com/equationscp/equationscp/actions. If this is a public release (such as CLI), in a few moments, your build will commence here https://github.com/equationscp/equationscp/actions, and be available here https://github.com/equationscp/equationscp/releases'.
   build-release:
     vars:
       VERSION:
         sh: cat version
-      cmds:
-        - git tag {{.VERSION}}
+    cmds:
+      - git tag {{.VERSION}}
+      - cmd: git push origin main --tags
+      - cmd: echo 'A run has been triggered here https://github.com/equationscp/equationscp/actions. If this is a public release (such as CLI), in a few moments, your build will commence here https://github.com/equationscp/equationscp/actions, and be available here https://github.com/equationscp/equationscp/releases'.
