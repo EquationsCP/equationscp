@@ -1,6 +1,7 @@
-<div align="center">
-  <img src="logo-compact.svg" alt="EquationsCP Logo" width="150"/>
+<div align="left">
+  <img src="logo-compact.svg" alt="EquationsCP Logo" width="170"/>
 </div>
+
 # EquationsCP - MCP Server for 
 
 A FastMCP server for solving algebraic equations using SymPy.
