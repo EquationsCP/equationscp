@@ -1,4 +1,5 @@
-# SymPy MCP Server
+![EquationsCP Logo](logo.svg)
+# EquationsCP - MCP Server for 
 
 A FastMCP server for solving algebraic equations using SymPy.
 
@@ -45,11 +46,11 @@ Congratulations! The MCP server is now running. It runs listening for MCP reques
 Restart Claude Desktop, and you should now be able to use the MCP server. Here's what it looks like in action:
 
 
-![Image](https://github.com/user-attachments/assets/32baac87-1d38-41c2-9b83-7a0419d80def) "Claude asking for permission to call EquationsCP"
+![Image](https://github.com/user-attachments/assets/32baac87-1d38-41c2-9b83-7a0419d80def) _Claude asking for permission to call EquationsCP_
 
-![Image](https://github.com/user-attachments/assets/3eff7bbd-a110-4117-8a2a-1374658fb3da) "The equation being converted to an input for the MCP server"
+![Image](https://github.com/user-attachments/assets/3eff7bbd-a110-4117-8a2a-1374658fb3da) _The equation being converted to an input for the MCP server_
 
-![Image](https://github.com/user-attachments/assets/e4ca4f16-5ba3-4a90-a59f-5c09a3b80549) "The MCP server's output along with how Claude finally renders the solution"
+![Image](https://github.com/user-attachments/assets/e4ca4f16-5ba3-4a90-a59f-5c09a3b80549) _The MCP server's output along with how Claude finally renders the solution_
 
 
 
